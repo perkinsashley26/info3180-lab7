@@ -26,12 +26,12 @@ def upload():
             description=request.form["description"]
             photo=request.files["photo"]
             filename= secure_filename(photo.filename)
-            photo.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-            return jsonify({'message':'File Upload Successful',
-                            'filename':filename,
-                            'description':description})
-        messages=[{'error_messages':x} for x in form_errors(form)]
-        return jsonify({'errors':messages})
+            photo.save(os.path.join(app.config["UPLOADFOLDER"],filename))
+            return jsonify({"message":"File Upload Successful",
+                            "filename":filename,
+                            "description":description})
+        messages=[{"error_messages":x} for x in form_errors(form)]
+        return jsonify({"errors":messages})
 
 # Please create all new routes and view functions above this route.
 # This route is now our catch all route for our VueJS single page
@@ -96,4 +96,4 @@ def page_not_found(error):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port="8080")
+    app.run(debug=True, host="0.0.0.0", port="8090")
